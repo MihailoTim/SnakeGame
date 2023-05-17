@@ -74,38 +74,38 @@ $(document).ready(function () {
           ? 0
           : highscoreTable.get(`${difficulty}-${mapSize}`);
     }
+  }
 
-    function boardXOffset() {
-      return board.offset().left + borderWidth;
-    }
+  function boardXOffset() {
+    return board.offset().left + borderWidth;
+  }
 
-    function boardYOffset() {
-      return board.offset().top + borderWidth;
-    }
+  function boardYOffset() {
+    return board.offset().top + borderWidth;
+  }
 
-    function boundaryRight() {
-      return (gridSize - 1) * cellWidth;
-    }
+  function boundaryRight() {
+    return (gridSize - 1) * cellWidth;
+  }
 
-    function boundaryBottom() {
-      return (gridSize - 1) * cellWidth;
-    }
+  function boundaryBottom() {
+    return (gridSize - 1) * cellWidth;
+  }
 
-    function loadBoard() {
-      currentScoreSpan.text(currentScore);
-      bestScoreSpan.text(bestScore);
-      board.css({
-        "max-width": maxBoardWidth + "px",
-        "min-width": maxBoardWidth + "px",
-        "min-height": maxBoardHeight + "px",
-        "max-height": maxBoardHeight + "px",
-      });
-      for (i = 0; i < gridSize * gridSize; i++) {
-        let cell = $("<div></div>")
-          .addClass("cell")
-          .addClass(i % 2 == 0 ? "cellEven" : "cellOdd");
-        board.append(cell);
-      }
+  function loadBoard() {
+    currentScoreSpan.text(currentScore);
+    bestScoreSpan.text(bestScore);
+    board.css({
+      "max-width": maxBoardWidth + "px",
+      "min-width": maxBoardWidth + "px",
+      "min-height": maxBoardHeight + "px",
+      "max-height": maxBoardHeight + "px",
+    });
+    for (i = 0; i < gridSize * gridSize; i++) {
+      let cell = $("<div></div>")
+        .addClass("cell")
+        .addClass(i % 2 == 0 ? "cellEven" : "cellOdd");
+      board.append(cell);
     }
   }
 

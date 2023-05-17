@@ -37,71 +37,75 @@ $(document).ready(function () {
 
   function getParameters() {
     let query = window.location.search.substring(1);
-    let params = query.split("&");
-    switch ((mapSize = params[1].split("=")[1])) {
-      case "small":
-        gridSize = 11;
-        break;
-      case "medium":
-        gridSize = 21;
-        break;
-      case "large":
-        gridSize = 31;
-        break;
-      default:
-        window.location.href = "./zmijica-uputstvo.html";
+    if (query.length == 0) {
+      window.location.href = "./zmijica-uputstvo.html";
+    } else {
+      let params = query.split("&");
+      switch ((mapSize = params[1].split("=")[1])) {
+        case "small":
+          gridSize = 11;
+          break;
+        case "medium":
+          gridSize = 21;
+          break;
+        case "large":
+          gridSize = 31;
+          break;
+        default:
+          window.location.href = "./zmijica-uputstvo.html";
+      }
+      switch ((difficulty = params[0].split("=")[1])) {
+        case "easy":
+          intervalTime = 200;
+          break;
+        case "medium":
+          intervalTime = 150;
+          break;
+        case "hard":
+          intervalTime = 100;
+          break;
+        default:
+          window.location.href = "./zmijica-uputstvo.html";
+      }
+      maxBoardWidth = gridSize * cellWidth + 2 * borderWidth;
+      maxBoardHeight = gridSize * cellWidth + 2 * borderWidth;
+      bestScore =
+        highscoreTable.get(`${difficulty}-${mapSize}`) == null
+          ? 0
+          : highscoreTable.get(`${difficulty}-${mapSize}`);
     }
-    switch ((difficulty = params[0].split("=")[1])) {
-      case "easy":
-        intervalTime = 200;
-        break;
-      case "medium":
-        intervalTime = 150;
-        break;
-      case "hard":
-        intervalTime = 100;
-        break;
-      default:
-        window.location.href = "./zmijica-uputstvo.html";
+
+    function boardXOffset() {
+      return board.offset().left + borderWidth;
     }
-    maxBoardWidth = gridSize * cellWidth + 2 * borderWidth;
-    maxBoardHeight = gridSize * cellWidth + 2 * borderWidth;
-    bestScore =
-      highscoreTable.get(`${difficulty}-${mapSize}`) == null
-        ? 0
-        : highscoreTable.get(`${difficulty}-${mapSize}`);
-  }
 
-  function boardXOffset() {
-    return board.offset().left + borderWidth;
-  }
+    function boardYOffset() {
+      return board.offset().top + borderWidth;
+    }
 
-  function boardYOffset() {
-    return board.offset().top + borderWidth;
-  }
+    function boundaryRight() {
+      return (gridSize - 1) * cellWidth;
+    }
 
-  function boundaryRight() {
-    return (gridSize - 1) * cellWidth;
-  }
+    function boundaryBottom() {
+      return (gridSize - 1) * cellWidth;
+    }
 
-  function boundaryBottom() {
-    return (gridSize - 1) * cellWidth;
-  }
-
-  function loadBoard() {
-    currentScoreSpan.text(currentScore);
-    bestScoreSpan.text(bestScore);
-    board.css({
-      "max-width": maxBoardWidth + "px",
-      "min-width": maxBoardWidth + "px",
-      "min-height": maxBoardHeight + "px",
-      "max-height": maxBoardHeight + "px",
-    });
-    for (i = 0; i < gridSize * gridSize; i++) {
-      let cell = $("<div></div>")
-        .addClass("cell")
-        .addClass(i % 2 == 0 ? "cellEven" : "cellOdd");
-      board.append(cell);
+    function loadBoard() {
+      currentScoreSpan.text(currentScore);
+      bestScoreSpan.text(bestScore);
+      board.css({
+        "max-width": maxBoardWidth + "px",
+        "min-width": maxBoardWidth + "px",
+        "min-height": maxBoardHeight + "px",
+        "max-height": maxBoardHeight + "px",
+      });
+      for (i = 0; i < gridSize * gridSize; i++) {
+        let cell = $("<div></div>")
+          .addClass("cell")
+          .addClass(i % 2 == 0 ? "cellEven" : "cellOdd");
+        board.append(cell);
+      }
     }
   }
 

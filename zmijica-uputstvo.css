@@ -1,0 +1,39 @@
+body{
+    background-color: rgb(30, 40, 54);
+    color: white;
+}
+
+.card{
+    background-color: rgb(38, 52, 69);
+    border: 1px solid white;
+    margin-top: 30px;
+}
+
+button{
+    margin-left: 20px;
+}
+
+select{
+    margin-right: 20px;
+    font-size: 20px;
+}
+
+label{
+    font-size: 20px;
+}
+
+button > span{
+    font-size: 20px;
+}
+
+.selects{
+    margin-bottom:20px
+}
+
+form{
+    padding:20px 20px 20px 20px;
+}
+
+.title{
+    margin-top: 20px;
+}

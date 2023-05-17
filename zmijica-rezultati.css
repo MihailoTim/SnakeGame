@@ -1,0 +1,59 @@
+body{
+    background-color: rgb(30, 40, 54);
+}
+
+tr:nth-child(even) {
+    background-color: rgb(30, 40, 54);
+    color: white;
+}
+
+tr:nth-child(odd) {
+    background-color: rgb(38, 52, 69);
+    color: white;
+}
+
+table{
+    border: 1px solid white;
+    color: white;
+}
+
+td{
+    color: white;
+}
+
+th{
+    color:white
+}
+
+thead{
+    border: 1px solid white;
+    color: white;
+}
+
+h1, h3{
+    color:white;
+}
+
+.table-container{
+    margin-left: 25px;
+    margin-right: 25px;
+    text-align: center;
+}
+
+hr{
+    color: white;
+}
+
+.perDifficulty{
+    margin-top:50px
+}
+
+.previousScore{
+    color: white;
+    margin-top: 30px;
+}
+
+button{
+    float: left;
+    color: yellow;
+}

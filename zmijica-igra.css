@@ -1,0 +1,77 @@
+body{
+    background-color: rgb(30, 40, 54);
+}
+
+
+.cell{
+    min-width: 20px;
+    min-height: 20px;
+    height: 20px;
+    width: 20px;
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.cellOdd{
+    background-color: rgb(38, 52, 69);
+}
+
+.cellEven{
+    background-color: rgb(30, 40, 54);
+}
+
+#board{
+    border: 1px solid white;
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container{
+    background-color: rgb(30, 40, 54);
+    padding:50px;
+    padding-top: 20px;
+}
+
+.snake{
+    position:fixed;
+    width: 20px;
+    height: 20px;
+    background-color: rgb(24, 123, 245);
+}
+
+.fruit{
+    position: fixed;
+    width: 16px;
+    height: 16px;
+    margin: 2px;
+    background-color: rgb(230, 54, 45);
+    border-radius: 8px;
+}
+
+.scoreText{
+    color: white;
+    margin-left: 30px;
+}
+
+#currentScoreSpan{
+    color:white;
+    margin-left: 0;
+}
+
+#bestScoreSpan{
+    color:white;
+    margin-left: 0;
+}
+
+
+.superFruit{
+    position: fixed;
+    width: 16px;
+    height: 16px;
+    margin: 2px;
+    background-color: rgb(255, 234, 0);
+    border-radius: 8px;
+}

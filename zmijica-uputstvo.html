@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="zmijica-uputstvo.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script src="zmijica-uputstvo.js"></script>
+    <title>Instructions</title>
+</head>
+<body>
+    <div class="container">
+        <div class="card">   
+            <div class="text-center"><h1 class="title">Snake game</h1></div>
+            <div class="col-sm-8 offset-sm-2">
+                <ul>
+                    <li>The game consists of a snake moving around a grid</li>
+                    <li>The objective of the game is to eat as much food as possible and grow the snake.</li>
+                    <li>The snake starts as a dot on the grid.</li>
+                    <li>The snake can move in four directions: up, down, left, and right.</li>
+                    <li>The snake moves continuously in the direction it is currently facing.</li>
+                    <li>The player controls the direction of the snake using arrow keys</li>
+                    <li>The snake cannot move in the opposite direction of its current movement, as this would result in collision with
+                        itself.</li>
+                    <li>The snake can collide with the boundaries of the grid, which results in the end of the game.</li>
+                    <li>The snake can collide with itself, which also results in the end of the game.</li>
+                    <li>Food items, represented as dots appear at random positions on the grid</li>
+                    <li>When the snake's head touches a food item, the snake grows longer by one segment.</li>
+                    <li>Food can be either regular fruit which is worth 1 point or "super" fruit which is worth 10 points</li>
+                    <li>"Super" fruit dissapears every 10 seconds and appears at a different location</li>
+                    <li>The game continues until the snake collides with a boundary or itself.</li>
+                    <li>Using the menu below, you can choose difficulty which affects speed of the snake's movement and map size which determines grid's width and height</li>
+                </ul>
+            </div>
+            <form class="form-inline">
+                <div class="text-center">   
+                    <div class="selects"> 
+                        <label class="my-1 mr-2" for="selectDifficulty">Difficulty</label>
+                        <select class="custom-select my-1 mr-sm-2" id="selectDifficulty">
+                            <option value="easy">Easy</option>
+                            <option value="medium" selected>Medium</option>
+                            <option value="hard">Hard</option>
+                        </select>
+                        <label class="my-1 mr-2" for="selectMap">Map size</label>
+                        <select class="custom-select my-1 mr-sm-2" id="selectMap">
+                            <option value="small">Small</option>
+                            <option value="medium" selected>Medium</option>
+                            <option value="large">Large</option>
+                    </select>
+                </div>
+                
+                <button id="results" class="btn btn-primary my-1"><span>Results page</span></button>
+                <button id="game"class="btn btn-primary my-1"><span>Play the game</span></button>
+            </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

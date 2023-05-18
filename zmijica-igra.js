@@ -36,12 +36,11 @@ $(document).ready(function () {
   }
 
   function getParameters() {
-    let query = window.location.search.substring(1);
-    if (query.length == 0) {
+    var queryParameters = new URLSearchParams(window.location.search);
+    if (queryParameters.size == 0) {
       window.location.href = "./zmijica-uputstvo.html";
     } else {
-      let params = query.split("&");
-      switch ((mapSize = params[1].split("=")[1])) {
+      switch ((mapSize = queryParameters.get("mapSize"))) {
         case "small":
           gridSize = 11;
           break;
@@ -54,7 +53,7 @@ $(document).ready(function () {
         default:
           window.location.href = "./zmijica-uputstvo.html";
       }
-      switch ((difficulty = params[0].split("=")[1])) {
+      switch ((difficulty = queryParameters.get("difficulty"))) {
         case "easy":
           intervalTime = 200;
           break;
@@ -248,11 +247,12 @@ $(document).ready(function () {
       "highscoreTable",
       JSON.stringify(Object.fromEntries(highscoreTable))
     );
+    console.log(Date.now());
     let username = null;
     while (username == null || username == "") {
       username = prompt("Igra je završena! Unesite svoje ime:");
     }
-    window.location.href = `./zmijica-rezultati.html?difficulty=${difficulty}&mapSize=${mapSize}&username=${username}&score=${currentScore}`;
+    window.location.href = `./zmijica-rezultati.html?difficulty=${difficulty}&mapSize=${mapSize}&username=${username}&score=${currentScore}&id=${Date.now()}`;
   }
 
   getHighScoreTable();

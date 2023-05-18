@@ -3,6 +3,7 @@ $(document).ready(function () {
   let mapSize = null;
   let username = null;
   let score = null;
+  let sessionId = null;
   let scoreTable = new Map();
 
   function getParameters() {
@@ -14,10 +15,14 @@ $(document).ready(function () {
       mapSize = queryParameters.get("mapSize");
       username = queryParameters.get("username");
       score = queryParameters.get("score");
+      sessionId = queryParameters.get("id");
       $("#diffToFill").text(difficulty);
       $("#mapToFill").text(mapSize);
       $("#scoreToFill").text(score);
-      updateLocalStorage();
+      if (sessionStorage.getItem("sessionId") != sessionId) {
+        sessionStorage.setItem("sessionId", sessionId);
+        updateLocalStorage();
+      }
     } else {
       $(".previousScore").hide();
     }

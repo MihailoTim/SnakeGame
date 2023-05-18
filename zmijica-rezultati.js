@@ -6,18 +6,17 @@ $(document).ready(function () {
   let scoreTable = new Map();
 
   function getParameters() {
-    let query = window.location.search.substring(1);
-    if (query.length > 0) {
+    var queryParameters = new URLSearchParams(window.location.search);
+    console.log(queryParameters);
+    if (queryParameters.size > 0) {
       $(".previousScore").show();
-      let params = query.split("&");
-      difficulty = params[0].split("=")[1];
-      mapSize = params[1].split("=")[1];
-      username = params[2].split("=")[1];
-      score = params[3].split("=")[1];
+      difficulty = queryParameters.get("difficulty");
+      mapSize = queryParameters.get("mapSize");
+      username = queryParameters.get("username");
+      score = queryParameters.get("score");
       $("#diffToFill").text(difficulty);
       $("#mapToFill").text(mapSize);
       $("#scoreToFill").text(score);
-
       updateLocalStorage();
     } else {
       $(".previousScore").hide();
@@ -25,9 +24,9 @@ $(document).ready(function () {
   }
 
   function cmpScorePair(a, b) {
-    if (a.score > b.score) {
+    if (Number(a.score) > Number(b.score)) {
       return -1;
-    } else if (a.score < b.score) {
+    } else if (Number(a.score) < Number(b.score)) {
       return 1;
     } else {
       return 0;
@@ -41,6 +40,7 @@ $(document).ready(function () {
         : scoreTable.get(`${difficulty}-${mapSize}`);
     list.push({ username, score });
     list.sort(cmpScorePair);
+    console.log(list);
     list = list.slice(0, 5);
     scoreTable.set(`${difficulty}-${mapSize}`, list);
     localStorage.setItem(
@@ -67,7 +67,6 @@ $(document).ready(function () {
 
   function populateTables() {
     for (const [key, list] of scoreTable) {
-      console.log(key);
       let table = $("#" + key);
       let list = scoreTable.get(key);
       for (let id in list) {
@@ -78,7 +77,6 @@ $(document).ready(function () {
         row.append(th).append(username).append(score);
         table.append(row);
       }
-      console.log(list);
     }
   }
 

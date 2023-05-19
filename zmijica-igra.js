@@ -37,7 +37,7 @@ $(document).ready(function () {
 
   function getParameters() {
     var queryParameters = new URLSearchParams(window.location.search);
-    if (queryParameters.size == 0) {
+    if (window.location.search.length == 0) {
       window.location.href = "./zmijica-uputstvo.html";
     } else {
       switch ((mapSize = queryParameters.get("mapSize"))) {
@@ -205,9 +205,7 @@ $(document).ready(function () {
       currentScoreSpan.text(currentScore);
       bestScore = currentScore >= bestScore ? currentScore : bestScore;
       bestScoreSpan.text(bestScore);
-      spawnSuperFruit();
-      clearInterval(superFruitInterval);
-      superFruitInterval = setInterval(spawnSuperFruit, 10000);
+      board.find(".superFruit").remove();
       fruitEaten.push(snakeHead);
     }
   }
@@ -247,7 +245,6 @@ $(document).ready(function () {
       "highscoreTable",
       JSON.stringify(Object.fromEntries(highscoreTable))
     );
-    console.log(Date.now());
     let username = null;
     while (username == null || username == "") {
       username = prompt("Igra je završena! Unesite svoje ime:");

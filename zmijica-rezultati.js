@@ -8,8 +8,7 @@ $(document).ready(function () {
 
   function getParameters() {
     var queryParameters = new URLSearchParams(window.location.search);
-    console.log(queryParameters);
-    if (queryParameters.size > 0) {
+    if (window.location.search.length > 0) {
       $(".previousScore").show();
       difficulty = queryParameters.get("difficulty");
       mapSize = queryParameters.get("mapSize");
@@ -45,7 +44,6 @@ $(document).ready(function () {
         : scoreTable.get(`${difficulty}-${mapSize}`);
     list.push({ username, score });
     list.sort(cmpScorePair);
-    console.log(list);
     list = list.slice(0, 5);
     scoreTable.set(`${difficulty}-${mapSize}`, list);
     localStorage.setItem(
